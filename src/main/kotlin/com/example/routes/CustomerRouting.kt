@@ -16,7 +16,6 @@ fun Route.customerRouting() {
             } else {
                 call.respondText("No customer found", status = HttpStatusCode.OK)
             }
-
         }
 
         get("{id?}") {
@@ -33,7 +32,7 @@ fun Route.customerRouting() {
         }
 
         post {
-            // Request Body를 역직렬화
+            // receive : Request Body를 역직렬화
             val customer = call.receive<Customer>()
             customerStorage.add(customer)
             call.respondText("Customer stored correctly", status = HttpStatusCode.Created)
